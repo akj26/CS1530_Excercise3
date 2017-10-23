@@ -1,0 +1,28 @@
+apply plugin: 'java'
+apply plugin: 'application'
+
+mainClassName = "amaniAlex.Excercise"
+
+repositories {
+   mavenCentral()
+}
+
+dependencies {
+  testCompile 'junit:junit:4.12'
+}
+
+
+run {
+    try { 
+        systemProperties System.getProperties()
+	      args System.getProperty("args").split()
+    } catch (Exception e) {
+        // println "Please add -Dargs=\"...\" even if it is empty"
+    }
+	
+}
+
+task demo(type: Exec) << {
+     // commandLine "gradle -q run -Dargs=\"30\""
+     commandLine "ls"
+}
